@@ -1,0 +1,14 @@
+version: "3"
+services:
+  api:
+    container_name: api-container
+    image: node:16
+    working_dir: /usr/src/project-inicie
+    restart: always
+    command: bash -c "npm install --only=prod && npm run start"
+    volumes:
+      - ./dist/:/usr/src/project-inicie/dist/
+      - ./package.json:/usr/src/project-inicie/package.json
+    ports:
+      - "5050:5050"
+      - "9222:9222"
